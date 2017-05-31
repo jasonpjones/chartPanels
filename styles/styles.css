@@ -21,13 +21,13 @@ body
 #body-area
 {
     left: 0;
-    right: 400px;
+    right: 0;
     background-color: beige;
 }
 
 #filter-area
 {
-    width: 400px;
+    width: 0;
     background: #FDE95E;
     right: 0;
 }
@@ -42,7 +42,7 @@ body
     cursor: hand;
 }
 
-.show-filter
+#show-filter
 {
     top: 5px;
     right: 5px;
@@ -50,12 +50,13 @@ body
     background-repeat: no-repeat;
 }
 
-.hide-filter
+#hide-filter
 {
     top: 5px;
     left: 5px;
     background-image: url('../images/arrow_r.png');
     background-repeat: no-repeat;
+    display: none;
 }
 
 

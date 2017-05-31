@@ -2,8 +2,13 @@
 ActInsight = {};
 
 ActInsight.FilterArea = function () {
-    this.isShowing = true;
+    this.isShowing = false;
     this.visWidth = '400px';
+    this.animationSpeed = 100;
+    this.$filterArea = $("#filter-area");
+    this.$bodyArea = $("#body-area");
+    this.$showFilterArrow = $("#show-filter");
+    this.$hideFilterArrow = $("#hide-filter");
 };
 
 ActInsight.FilterArea.prototype = {
@@ -21,14 +26,21 @@ ActInsight.FilterArea.prototype = {
     },
 
     collapseFilterArea: function () {
-        $("#filter-area").animate({width: 0}, 500);
-        $("#body-area").animate({"right": "0px"}, 500);
+        var _this = this;
+        this.$filterArea.animate({width: 0}, this.animationSpeed);
+        this.$bodyArea.animate({"right": "0px"}, this.animationSpeed, function() {
+            _this.$showFilterArrow.show();
+        });
+        this.$hideFilterArrow.hide();
         this.isShowing = false;
     },
 
     expandFilterArea: function () {
-        $("#filter-area").animate({width: this.visWidth}, 500);
-        $("#body-area").animate({"right": this.visWidth}, 500);
+        var _this = this;
+        this.$filterArea.animate({width: this.visWidth}, this.animationSpeed);
+        this.$bodyArea.animate({"right": this.visWidth}, this.animationSpeed);
+        this.$showFilterArrow.hide();
+        this.$hideFilterArrow.show();
         this.isShowing = true;
     }
 };
